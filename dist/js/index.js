@@ -10696,19 +10696,105 @@ return jQuery;
 
 /***/ }),
 
-/***/ "./src/js/functions/testFunc.js":
-/*!**************************************!*\
-  !*** ./src/js/functions/testFunc.js ***!
-  \**************************************/
-/*! exports provided: testFunc */
+/***/ "./src/js/functions/indexPage.js":
+/*!***************************************!*\
+  !*** ./src/js/functions/indexPage.js ***!
+  \***************************************/
+/*! exports provided: ifIndexPage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testFunc", function() { return testFunc; });
-function testFunc() {
-  console.log('testFunc');
-}
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ifIndexPage", function() { return ifIndexPage; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+var ifIndexPage = function ifIndexPage() {
+  var wait = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#wait');
+  var menu = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#menu');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://my-json-server.typicode.com/ha100790tag/baseBuildJS/posts', function (data) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.each(data, function (i, val) {
+      var li = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<li/>').addClass('nav-item');
+      var a = jquery__WEBPACK_IMPORTED_MODULE_0___default()("<a class=\"nav-link\" href=\"post".concat(val.id, ".html\">").concat(val.title, "</a>"));
+      menu.append(li).append(a);
+    });
+    wait.addClass('d-none');
+  });
+}; // export const ifIndexPage = function() {
+//     const wait = document.getElementById('wait');
+//     const menu = document.getElementById('menu');
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('GET', 'https://my-json-server.typicode.com/ha100790tag/baseBuildJS/posts');
+//     xhr.timeout = 5000;
+//     xhr.send();
+//     xhr.onreadystatechange = function() {
+//         if(xhr.readyState === 4 && xhr.status === 200) {
+//             let data;
+//             data = JSON.parse(xhr.response);
+//             data.forEach((item) => {
+//                 const li = document.createElement('li');
+//                 const a = document.createElement('a');
+//                 li.classList.add('nav-item');
+//                 a.classList.add('nav-link');
+//                 a.setAttribute('href', 'post' + item.id + '.html');
+//                 li.appendChild(a);                
+//                 menu.appendChild(li);
+//                 a.innerHTML = item.title;
+//             });
+//             wait.classList.add('d-none');
+//         }
+//     };
+// };
+
+/***/ }),
+
+/***/ "./src/js/functions/postPage.js":
+/*!**************************************!*\
+  !*** ./src/js/functions/postPage.js ***!
+  \**************************************/
+/*! exports provided: ifPostPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ifPostPage", function() { return ifPostPage; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+var ifPostPage = function ifPostPage() {
+  var cardItem = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#cardItem');
+  var postId = parseInt(location.pathname.charAt(location.pathname.search(/[0-9]/)));
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://my-json-server.typicode.com/ha100790tag/baseBuildJS/posts?id=".concat(postId), function (data) {
+    var h5 = jquery__WEBPACK_IMPORTED_MODULE_0___default()("<h5 class=\"card-title\">".concat(data[0].title, "</h5>"));
+    var p = jquery__WEBPACK_IMPORTED_MODULE_0___default()("<p class=\"card-text\">".concat(data[0].text, "</p>"));
+    cardItem.append(h5, p);
+    wait.classList.add('d-none');
+  });
+}; // export const ifPostPage = function() {
+//     const cardItem = document.getElementById('cardItem');
+//     const postId = parseInt(
+//         location.pathname.charAt(location.pathname.search(/[0-9]/))
+//     );
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('GET', `https://my-json-server.typicode.com/ha100790tag/baseBuildJS/posts?id=${postId}`);
+//     xhr.timeout = 5000;
+//     xhr.send();
+//     xhr.onreadystatechange = function() {
+//         if(xhr.readyState === 4 && xhr.status === 200) {
+//             let data;
+//             data = JSON.parse(xhr.response);
+//             const h5 = document.createElement('h5');
+//             const p = document.createElement('p');
+//             h5.classList.add('card-title');
+//             p.classList.add('card-text');
+//             h5.innerHTML = data[0].title;
+//             p.innerHTML = data[0].text;
+//             cardItem.appendChild(h5);
+//             cardItem.appendChild(p);
+//             wait.classList.add('d-none');
+//         }
+//     };
+// };
 
 /***/ }),
 
@@ -10723,48 +10809,30 @@ function testFunc() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+/* harmony import */ var functions_indexPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! functions/indexPage */ "./src/js/functions/indexPage.js");
+/* harmony import */ var functions_postPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! functions/postPage */ "./src/js/functions/postPage.js");
 
 
-jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#wrapper"));
-});
-console.log(['Dog', ['Sheep', ['Wolf']]].flat(2));
 
-var Human =
-/*#__PURE__*/
-function () {
-  function Human(name) {
-    _classCallCheck(this, Human);
-
-    this.name = name;
-  }
-
-  _createClass(Human, [{
-    key: "sayHi",
-    value: function sayHi() {
-      console.log('Hi, my name is' + this.name);
-    }
-  }]);
-
-  return Human;
-}();
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).ready(function () {
+  var isIndex = location.href.includes('index');
+  isIndex ? Object(functions_indexPage__WEBPACK_IMPORTED_MODULE_1__["ifIndexPage"])() : Object(functions_postPage__WEBPACK_IMPORTED_MODULE_2__["ifPostPage"])();
+}); // window.addEventListener('load', function() {
+//     const isIndex = location.href.includes('index');
+//     isIndex ? ifIndexPage() : ifPostPage();
 
 /***/ }),
 
 /***/ 0:
-/*!**************************************************************!*\
-  !*** multi ./src/js/index.js ./src/js/functions/testFunc.js ***!
-  \**************************************************************/
+/*!**********************************************************************************************!*\
+  !*** multi ./src/js/index.js ./src/js/functions/indexPage.js ./src/js/functions/postPage.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\testBuild\src\js\index.js */"./src/js/index.js");
-module.exports = __webpack_require__(/*! C:\testBuild\src\js\functions\testFunc.js */"./src/js/functions/testFunc.js");
+__webpack_require__(/*! C:\Users\Sunburst\Desktop\Программирование\1 КУРСЫ ITCloud\javascript\проект 1\xhr_demo\src\js\index.js */"./src/js/index.js");
+__webpack_require__(/*! C:\Users\Sunburst\Desktop\Программирование\1 КУРСЫ ITCloud\javascript\проект 1\xhr_demo\src\js\functions\indexPage.js */"./src/js/functions/indexPage.js");
+module.exports = __webpack_require__(/*! C:\Users\Sunburst\Desktop\Программирование\1 КУРСЫ ITCloud\javascript\проект 1\xhr_demo\src\js\functions\postPage.js */"./src/js/functions/postPage.js");
 
 
 /***/ })

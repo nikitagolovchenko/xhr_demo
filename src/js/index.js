@@ -1,17 +1,18 @@
 import $ from 'jquery';
 
-$(document).ready(() => {
-    console.log($("#wrapper"));
+
+import {ifIndexPage} from 'functions/indexPage';
+import {ifPostPage} from 'functions/postPage';
+
+
+$(window).ready(function(){
+    const isIndex = location.href.includes('index');
+    isIndex ? ifIndexPage() : ifPostPage();
+    
 });
 
-console.log(['Dog', ['Sheep', ['Wolf']]].flat(2));
 
-class Human {
-    constructor(name) {
-        this.name = name;
-    }
+// window.addEventListener('load', function() {
+//     const isIndex = location.href.includes('index');
+//     isIndex ? ifIndexPage() : ifPostPage();
 
-    sayHi() {
-        console.log('Hi, my name is' + this.name);
-    }
-}
